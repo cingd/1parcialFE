@@ -10,14 +10,15 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
   
-    // Validación del nombre de la mascota
-    if (petName.trim().length < 3) {
-      setError("El nombre de la mascota debe tener al menos 3 caracteres y no contener espacios al inicio.");
-      setShowCard(false);
-      return;
-    }
+  // Validación del nombre de la mascota PRIMER IMPUT
+  const trimmedPetName = petName.trim();
+  if (trimmedPetName.length < 3 || /\s/.test(trimmedPetName)) {
+    setError("El nombre de la mascota debe tener al menos 3 caracteres y no debe contener espacios.");
+    setShowCard(false);
+    return;
+  }
   
-    // Validación del nombre del dueño
+    // Validación del nombre del dueño SEGUNDO IMPUT
     if (ownerName.length < 6) {
       setError("El nombre del dueño debe tener al menos 6 caracteres.");
       setShowCard(false);
